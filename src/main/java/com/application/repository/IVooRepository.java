@@ -1,5 +1,7 @@
 package com.application.repository;
 
+import com.application.exceptions.VooJaCadastradoException;
+import com.application.exceptions.VooNaoEncontradoException;
 import com.application.model.Voo;
 import java.util.List;
 
@@ -9,9 +11,9 @@ import java.util.List;
  * Requisito 4: Define retornos usando List para trabalhar com coleções
  */
 public interface IVooRepository {
-    void adicionar(Voo voo);
-    Voo buscarPorNumero(String numeroVoo);
+    void adicionar(Voo voo) throws VooJaCadastradoException;
+    Voo buscarPorNumero(String numeroVoo) throws VooNaoEncontradoException;
     List<Voo> listarTodos(); // Requisito 4: Uso de coleção List
-    void atualizar(Voo voo);
-    void remover(String numeroVoo);
+    void atualizar(Voo voo) throws VooNaoEncontradoException;
+    void remover(String numeroVoo) throws VooNaoEncontradoException;
 }

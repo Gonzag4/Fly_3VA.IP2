@@ -3,6 +3,8 @@ package com.application.repository;
 
 import com.application.model.Passagem;
 import java.util.List;
+import com.application.exceptions.PassagemJaCadastradaException;
+import com.application.exceptions.PassagemNaoEncontradaException;
 
 
 /**
@@ -11,9 +13,9 @@ import java.util.List;
  * Requisito 4: Define retornos usando List para trabalhar com coleções
  */
 public interface IPassagemRepository {
-    void adicionar(Passagem passagem);
-    Passagem buscarPorId(int id);
+    void adicionar(Passagem passagem) throws PassagemJaCadastradaException;
+    Passagem buscarPorId(int id) throws PassagemNaoEncontradaException;
     List<Passagem> listarTodas(); // Requisito 4: Uso de coleção List
     List<Passagem> buscarPorPassageiro(int idPassageiro);
-    void remover(int id);
+    void remover(int id) throws PassagemNaoEncontradaException;
 }
