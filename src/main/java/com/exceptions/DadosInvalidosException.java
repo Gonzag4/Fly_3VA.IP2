@@ -1,4 +1,4 @@
-package com.application.exceptions;
+package com.exceptions;
 
 public class DadosInvalidosException extends Exception {
     public DadosInvalidosException(String mensagem) {

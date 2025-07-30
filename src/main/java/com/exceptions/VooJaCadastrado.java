@@ -1,4 +1,4 @@
-package com.application.exceptions;
+package com.exceptions;
 
 public class VooJaCadastradoException extends Exception {
     public VooJaCadastradoException(String message) {

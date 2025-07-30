@@ -1,4 +1,4 @@
-package com.application.exceptions;
+package com.exceptions;
 
 public class VooLotadoException extends Exception {
     public VooLotadoException(String mensagem) {

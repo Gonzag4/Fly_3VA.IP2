@@ -1,8 +1,8 @@
-package com.application.repository;
+package com.repository;
 
-import com.application.model.Voo;
-import com.application.exceptions.VooJaCadastradoException;
-import com.application.exceptions.VooNaoEncontradoException;
+import com.model.Voo;
+import com.exceptions.VooJaCadastradoException;
+import com.exceptions.VooNaoEncontradoException;
 import java.util.ArrayList;
 import java.util.List;
 

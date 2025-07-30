@@ -1,4 +1,4 @@
-package com.application.model;
+package com.model;
 
 public interface Calculavel {
     double calcularPrecoFinal();

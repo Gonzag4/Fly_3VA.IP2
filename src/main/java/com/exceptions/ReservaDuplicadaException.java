@@ -1,4 +1,4 @@
-package com.application.exceptions;
+package com.exceptions;
 
 public class ReservaDuplicadaException extends Exception {
     public ReservaDuplicadaException(String mensagem) {

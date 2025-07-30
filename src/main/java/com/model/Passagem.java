@@ -1,4 +1,4 @@
-package com.application.model;
+package com.model;
 
 public class Passagem implements Reservavel { // Requisito 3: Implementa interface
     private static int contador = 1; // Requisito 9: Atributo estático

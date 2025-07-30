@@ -1,4 +1,4 @@
-package com.application.model;
+package com.model;
 
 /**
  * Classe que representa um passageiro do sistema

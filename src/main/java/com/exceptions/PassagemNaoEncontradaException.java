@@ -1,4 +1,4 @@
-package com.application.exceptions;
+package com.exceptions;
 
 public class PassagemNaoEncontradaException extends Exception {
     public PassagemNaoEncontradaException(String message) {

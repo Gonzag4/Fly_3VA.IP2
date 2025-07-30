@@ -1,8 +1,8 @@
-package com.application.repository;
+package com.repository;
 
-import com.application.exceptions.PassageiroJaCadastradoException;
-import com.application.exceptions.PassageiroNaoEncontradoException;
-import com.application.model.Passageiro;
+import com.exceptions.PassageiroJaCadastradoException;
+import com.exceptions.PassageiroNaoEncontradoException;
+import com.model.Passageiro;
 
 import java.util.ArrayList;
 import java.util.List;

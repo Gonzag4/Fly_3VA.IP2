@@ -1,10 +1,10 @@
-package com.application.repository;
+package com.repository;
 
 
-import com.application.model.Passagem;
+import com.model.Passagem;
 import java.util.List;
-import com.application.exceptions.PassagemJaCadastradaException;
-import com.application.exceptions.PassagemNaoEncontradaException;
+import com.exceptions.PassagemJaCadastradaException;
+import com.exceptions.PassagemNaoEncontradaException;
 
 
 /**

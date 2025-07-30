@@ -1,4 +1,4 @@
-package com.application.exceptions;
+package com.exceptions;
 
 public class PassageiroNaoEncontradoException extends Exception {
     public PassageiroNaoEncontradoException(String mensagem) {

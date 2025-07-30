@@ -1,8 +1,8 @@
-package com.application.repository;
+package com.repository;
 
-import com.application.model.Passagem;
-import com.application.exceptions.PassagemJaCadastradaException;
-import com.application.exceptions.PassagemNaoEncontradaException;
+import com.model.Passagem;
+import com.exceptions.PassagemJaCadastradaException;
+import com.exceptions.PassagemNaoEncontradaException;
 import java.util.ArrayList;
 import java.util.List;
 
