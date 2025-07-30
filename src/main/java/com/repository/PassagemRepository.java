@@ -7,14 +7,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PassagemRepository implements IPassagemRepository {
+    // Requisito 9: Singleton
+    private static PassagemRepository instance;
+    private final List<Passagem> passagens;
 
-    private final List<Passagem> passagens = new ArrayList<>();
+    private PassagemRepository() {
+        this.passagens = new ArrayList<>();
+    }
+
+    public static synchronized PassagemRepository getInstance() {
+        if (instance == null) {
+            instance = new PassagemRepository();
+        }
+        return instance;
+    }
 
     @Override
     public void adicionar(Passagem passagem) throws PassagemJaCadastradaException {
+        // Verifica se já existe uma passagem com o mesmo ID
         for (Passagem p : passagens) {
             if (p.getId() == passagem.getId()) {
-                throw new PassagemJaCadastradaException("Passagem com este ID já cadastrada.");
+                throw new PassagemJaCadastradaException("Passagem já cadastrada com este ID.");
             }
         }
         passagens.add(passagem);
@@ -48,9 +61,16 @@ public class PassagemRepository implements IPassagemRepository {
 
     @Override
     public void remover(int id) throws PassagemNaoEncontradaException {
-        boolean removido = passagens.removeIf(p -> p.getId() == id);
+        boolean removido = false;
+        for (int i = 0; i < passagens.size(); i++) {
+            if (passagens.get(i).getId() == id) {
+                passagens.remove(i);
+                removido = true;
+                break;
+            }
+        }
         if (!removido) {
-            throw new PassagemNaoEncontradaException("Passagem para remoção não encontrada.");
+            throw new PassagemNaoEncontradaException("Passagem não encontrada para remoção.");
         }
     }
 }
