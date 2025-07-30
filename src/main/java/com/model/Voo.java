@@ -37,9 +37,19 @@ public abstract class Voo implements Calculavel, Reservavel {
     public String getDestino() { return destino; }
     public LocalDateTime getDataHora() { return dataHora; }
     public double getPrecoBase() { return precoBase; }
-    public int getAssentosDisponiveis() { return assentosDisponiveis; }
+    public int getAssentosDisponiveis() {
+
+        return assentosDisponiveis;
+
+    }
+
     public void setAssentosDisponiveis(int assentosDisponiveis) {
+
         this.assentosDisponiveis = assentosDisponiveis;
+    }
+
+    public void setOrigem(String origem) {
+        this.origem = origem;
     }
 
     // Requisito 2: Polimorfismo - método abstrato
@@ -66,4 +76,5 @@ public abstract class Voo implements Calculavel, Reservavel {
         }
         return false;
     }
+
 }

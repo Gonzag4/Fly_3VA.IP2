@@ -51,7 +51,6 @@ public class VooRepository implements IVooRepository {
 
     @Override
     public void atualizar(Voo voo) throws VooNaoEncontradoException {
-        // for-each usado para percorrer as list
         for (int i = 0; i < voos.size(); i++) {
             if (voos.get(i).getNumeroVoo().equals(voo.getNumeroVoo())) {
                 voos.set(i, voo);

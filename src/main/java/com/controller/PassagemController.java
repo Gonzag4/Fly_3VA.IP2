@@ -1,8 +1,5 @@
-package com.Controller;
+package com.controller;
 
-import com.model.Passageiro;
-import com.model.Passagem;
-import com.model.Voo;
 import com.repository.IPassageiroRepository;
 import com.repository.IPassagemRepository;
 import com.repository.IVooRepository;
@@ -30,5 +27,5 @@ public class PassagemController {
         return instance;
     }
 
-    
+
 }
