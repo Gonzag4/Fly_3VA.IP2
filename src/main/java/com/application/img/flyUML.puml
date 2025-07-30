@@ -1,0 +1,72 @@
+@startuml
+
+package model {
+  class Passageiro {
+    - nome: String
+    - cpf: String
+    - email: String
+    - numeroPassaporte: String
+    - possuiVisto: boolean
+    + Passageiro(nome: String, cpf: String, email: String, numeroPassaporte: String, possuiVisto: boolean)
+    + getNome(): String
+    + getCpf(): String
+    + getEmail(): String
+    + getNumeroPassaporte(): String
+    + possuiVisto(): boolean
+    + setNome(nome: String): void
+    + setCpf(cpf: String): void
+    + setEmail(email: String): void
+    + setNumeroPassaporte(passaporte: String): void
+    + setPossuiVisto(visto: boolean): void
+  }
+
+  abstract class Voo {
+    - id: int
+    - origem: String
+    - destino: String
+    - dataHora: LocalDateTime
+    - capacidade: int
+    - passagensVendidas: int
+    + Voo(id: int, origem: String, destino: String, dataHora: LocalDateTime, capacidade: int)
+    + getId(): int
+    + getOrigem(): String
+    + getDestino(): String
+    + getDataHora(): LocalDateTime
+    + getCapacidade(): int
+    + getPassagensVendidas(): int
+    + venderPassagem(): void
+    + calcularTaxa(): double
+  }
+
+  class VooNacional {
+    + calcularTaxa(): double
+  }
+
+  class VooInternacional {
+    - paisDestino: String
+    + VooInternacional(...)
+    + getPaisDestino(): String
+    + calcularTaxa(): double
+  }
+
+  Voo <|-- VooNacional
+  Voo <|-- VooInternacional
+
+  class Passagem {
+    - id: int
+    - passageiro: Passageiro
+    - voo: Voo
+    - precoBase: double
+    + Passagem(passageiro: Passageiro, voo: Voo, precoBase: double)
+    + getPassageiro(): Passageiro
+    + getVoo(): Voo
+    + getPrecoBase(): double
+    + getPrecoTotal(): double
+    + getResumo(): String
+  }
+}
+
+Passagem --> Passageiro
+Passagem --> Voo
+
+@enduml

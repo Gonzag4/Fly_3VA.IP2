@@ -1,0 +1,72 @@
+@startuml
+
+package model {
+  class Passageiro {
+    - id: int
+    - nome: String
+    - cpf: String
+    - email: String
+    - numeroPassaporte: String
+    - possuiVisto: boolean
+    + getId(): int
+    + getNome(): String
+    + getCpf(): String
+    + getEmail(): String
+    + getNumeroPassaporte(): String
+    + isPossuiVisto(): boolean
+  }
+
+  abstract class Voo {
+    - id: int
+    - numero: String
+    - origem: String
+    - destino: String
+    - dataHora: LocalDateTime
+    - assentosDisponiveis: int
+    - precoBase: double
+    + getId(): int
+    + getNumero(): String
+    + getOrigem(): String
+    + getDestino(): String
+    + getDataHora(): LocalDateTime
+    + getAssentosDisponiveis(): int
+    + getPrecoBase(): double
+    + reservar(): boolean
+    + cancelarReserva(): boolean
+    + calcularTaxa(): double
+    + calcularPrecoTotal(): double
+  }
+
+  class VooNacional {
+    + TAXA_NACIONAL: double
+  }
+
+  class VooInternacional {
+    + TAXA_INTERNACIONAL: double
+    - paisDestino: String
+    - precisaVisto: boolean
+    + getPaisDestino(): String
+    + isPrecisaVisto(): boolean
+  }
+
+  Voo <|-- VooNacional
+  Voo <|-- VooInternacional
+
+  class Passagem {
+    - id: int
+    - passageiro: Passageiro
+    - voo: Voo
+    - dataCompra: LocalDateTime
+    - precoFinal: double
+    + getId(): int
+    + getPassageiro(): Passageiro
+    + getVoo(): Voo
+    + getDataCompra(): LocalDateTime
+    + getPrecoFinal(): double
+  }
+}
+
+Passagem --> Passageiro
+Passagem --> Voo
+
+@enduml
