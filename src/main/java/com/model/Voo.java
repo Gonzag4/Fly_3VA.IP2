@@ -59,9 +59,8 @@ public abstract class Voo implements Calculavel, Reservavel {
     // Requisito 3: Implementação da interface Reservavel
     @Override
     public boolean reservar() {
-        if (assentosDisponiveis > 0 && !reservado) {
+        if (assentosDisponiveis > 0) {
             assentosDisponiveis--;
-            reservado = true;
             return true;
         }
         return false;

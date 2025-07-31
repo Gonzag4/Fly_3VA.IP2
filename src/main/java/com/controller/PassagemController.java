@@ -33,21 +33,24 @@ public class PassagemController {
 
     public void comprarPassagem(Passagem passagem)
             throws PassagemJaCadastradaException, VooNaoEncontradoException,
-            PassageiroNaoEncontradoException, VooLotadoException {
+            PassageiroNaoEncontradoException, VooLotadoException, AssentoOcupadoException {
 
         // Validações
         Passageiro passageiro = passageiroRepository.buscarPorId(passagem.getPassageiro().getId());
         Voo voo = vooRepository.buscarPorNumero(passagem.getVoo().getNumeroVoo());
 
-        if (voo.getAssentosDisponiveis() <= 0) {
+        // Verifica se o assento já está ocupado
+        if (passagemRepository.assentoOcupado(voo.getNumeroVoo(), passagem.getAssento())) {
+            throw new AssentoOcupadoException("Assento " + passagem.getAssento() + " já está ocupado");
+        }
+
+        // Tenta reservar (verifica se há assentos disponíveis)
+        if (!passagem.reservar()) {
             throw new VooLotadoException("Não há assentos disponíveis neste voo");
         }
 
+        // Se reservou com sucesso, então adiciona ao repositório
         passagemRepository.adicionar(passagem);
-
-        if (!passagem.reservar()) {
-            throw new VooLotadoException("Falha ao reservar passagem");
-        }
     }
 
     public Passagem buscarPassagemPorId(int id) throws PassagemNaoEncontradaException {

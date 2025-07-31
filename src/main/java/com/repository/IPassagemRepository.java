@@ -1,6 +1,7 @@
 package com.repository;
 
 
+import com.exceptions.VooNaoEncontradoException;
 import com.model.Passagem;
 import java.util.List;
 import com.exceptions.PassagemJaCadastradaException;
@@ -18,4 +19,5 @@ public interface IPassagemRepository {
     List<Passagem> listarTodas(); // Requisito 4: Uso de coleção List
     List<Passagem> buscarPorPassageiro(int idPassageiro);
     void remover(int id) throws PassagemNaoEncontradaException;
+    boolean assentoOcupado(String numeroVoo, String assento);
 }

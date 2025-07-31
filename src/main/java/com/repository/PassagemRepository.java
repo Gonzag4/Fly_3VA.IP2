@@ -1,5 +1,6 @@
 package com.repository;
 
+import com.exceptions.VooNaoEncontradoException;
 import com.model.Passagem;
 import com.exceptions.PassagemJaCadastradaException;
 import com.exceptions.PassagemNaoEncontradaException;
@@ -31,6 +32,13 @@ public class PassagemRepository implements IPassagemRepository {
             }
         }
         passagens.add(passagem);
+    }
+
+    @Override
+    public boolean assentoOcupado(String numeroVoo, String assento) {
+        return passagens.stream()
+                .anyMatch(p -> p.getVoo().getNumeroVoo().equals(numeroVoo)
+                        && p.getAssento().equalsIgnoreCase(assento));
     }
 
     @Override
