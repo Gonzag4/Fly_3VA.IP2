@@ -23,14 +23,15 @@ public class Testes {
         try {
             // ---- CADASTRO DE PASSAGEIROS ----
             System.out.println("\n1. Cadastrando passageiros válidos...");
-            passageiroController.cadastrarPassageiro("João Silva", "111.222.333-44", "11999999999");
-            passageiroController.cadastrarPassageiro("Maria Souza", "555.666.777-88", "21888888888");
+            passageiroController.cadastrarPassageiro("João Silva", "111.222.333-44", "11999999999", "joao", "senha123");
+            System.out.println("-> Sucesso: 1 passageiro cadastrado");
+            passageiroController.cadastrarPassageiro("Maria Souza", "555.666.777-88", "21888888888", "maria", "senha123");
             System.out.println("-> Sucesso: 2 passageiros cadastrados");
 
             // Teste CPF duplicado
             System.out.println("\n2. Tentando cadastrar CPF duplicado...");
             try {
-                passageiroController.cadastrarPassageiro("João Silva Clone", "111.222.333-44", "11999999999");
+                passageiroController.cadastrarPassageiro("João Silva Clone", "111.222.333-44", "11999999999", "joao_clone", "senha456");
                 System.out.println("-> Falha: Não lançou exceção para CPF duplicado");
             } catch (PassageiroJaCadastradoException e) {
                 System.out.println("-> Sucesso: " + e.getMessage());
@@ -213,6 +214,14 @@ public class Testes {
             } catch (PassagemNaoEncontradaException e) {
                 System.out.println("-> Falha: " + e.getMessage());
             }
+
+            // TESTE DE LOGIN
+            System.out.println("\n=== TESTE DE LOGIN DE PASSAGEIRO ===");
+            boolean loginValido = passageiroController.testarLogin("joao", "senha123");
+            System.out.println("Login válido (joao/senha123)? " + (loginValido ? "Sim" : "Não"));
+
+            boolean loginInvalido = passageiroController.testarLogin("maria", "senhaErrada");
+            System.out.println("Login válido (maria/senhaErrada)? " + (loginInvalido ? "Sim" : "Não"));
 
             System.out.println("\n===== TODOS OS TESTES CONCLUÍDOS! =====");
 

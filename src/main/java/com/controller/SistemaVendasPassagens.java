@@ -41,8 +41,8 @@ public class SistemaVendasPassagens {
         return instance;
     }
 
-    public void cadastrarPassageiro(String nome, String cpf, String telefone) throws PassageiroJaCadastradoException {
-        passageiroController.cadastrarPassageiro(nome, cpf, telefone);
+    public void cadastrarPassageiro(String nome, String cpf, String telefone, String login, String senha) throws PassageiroJaCadastradoException {
+        passageiroController.cadastrarPassageiro(nome, cpf, telefone, login, senha);
     }
 
     public Passageiro buscarPassageiro(int id) throws PassageiroNaoEncontradoException {
@@ -51,6 +51,10 @@ public class SistemaVendasPassagens {
 
     public List<Passageiro> listarPassageiros() {
         return passageiroController.listarTodosPassageiros();
+    }
+
+    public boolean testarLogin(String login, String senha) {
+        return passageiroController.testarLogin(login, senha);
     }
 
     public void cadastrarVooNacional(String numeroVoo, String origem, String destino,

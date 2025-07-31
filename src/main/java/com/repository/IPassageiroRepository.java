@@ -20,4 +20,5 @@ public interface IPassageiroRepository {
     List<Passageiro> listarTodos();  // Requisito 4: Uso de coleção List
     void atualizar(Passageiro passageiro) throws PassageiroNaoEncontradoException;
     void remover(int id) throws PassageiroNaoEncontradoException;
+    Passageiro buscarPorLoginESenha(String login, String senha) throws PassageiroNaoEncontradoException;
 }

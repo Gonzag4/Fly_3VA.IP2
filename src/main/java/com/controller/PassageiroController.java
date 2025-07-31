@@ -23,8 +23,8 @@ public class PassageiroController {
         return instance;
     }
 
-    public void cadastrarPassageiro(String nome, String cpf, String telefone) throws PassageiroJaCadastradoException {
-        Passageiro novoPassageiro = new Passageiro(nome, cpf, telefone);
+    public void cadastrarPassageiro(String nome, String cpf, String telefone, String login, String senha) throws PassageiroJaCadastradoException {
+        Passageiro novoPassageiro = new Passageiro(nome, cpf, telefone, login, senha);
         repository.cadastrar(novoPassageiro);
     }
 
@@ -46,5 +46,14 @@ public class PassageiroController {
 
     public void removerPassageiro(int id) throws PassageiroNaoEncontradoException {
         repository.remover(id);
+    }
+
+    public boolean testarLogin(String login, String senha) {
+        try {
+            repository.buscarPorLoginESenha(login, senha);
+            return true;
+        } catch (PassageiroNaoEncontradoException e) {
+            return false;
+        }
     }
 }
