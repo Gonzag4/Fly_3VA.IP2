@@ -3,9 +3,11 @@ package com.application;
 
 import com.controller.PassageiroController;
 import com.controller.VooController;
+import com.controller.PassagemController;
 import com.exceptions.*;
 import com.model.Passageiro;
 import com.model.Voo;
+import com.model.Passagem;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -14,6 +16,7 @@ public class Main {
         // Obtém instâncias Singleton dos controllers
         PassageiroController passageiroController = PassageiroController.getInstance();
         VooController vooController = VooController.getInstance();
+        PassagemController passagemController = PassagemController.getInstance();
 
         System.out.println("===== TESTE DO SISTEMA DE PASSAGENS AÉREAS =====");
         System.out.println("=== TESTES DE PASSAGEIRO ===");
@@ -145,6 +148,66 @@ public class Main {
                         " -> " + v.getDestino() + " | " + v.getDataHora() +
                         " | R$" + v.calcularPrecoFinal());
             }
+
+            System.out.println("\n=== TESTES DE PASSAGEM ===");
+
+            Passageiro passageiro = passageiroController.buscarPassageiroPorId(1);
+            Voo voo = vooController.buscarVoo("V123");
+
+            // Teste 17: Compra de passagem
+            System.out.println("\nTeste 17: Comprando passagem...");
+            Passagem passagem = new Passagem(passageiro, voo, "12A");
+            String resultadoCompra = passagemController.comprarPassagem(passagem);
+            System.out.println(resultadoCompra);
+
+            // Teste 18: Tentativa de compra duplicada (mesmo ID)
+            System.out.println("\nTeste 18: Tentando comprar passagem duplicada...");
+            String resultadoDuplicado = passagemController.comprarPassagem(passagem);
+            System.out.println(resultadoDuplicado);
+
+            // Teste 19: Buscar passagem por ID existente
+            System.out.println("\nTeste 19: Buscando passagem por ID existente...");
+            Passagem passagemBuscada = passagemController.buscarPassagemPorId(passagem.getId());
+            if (passagemBuscada != null) {
+                System.out.println("Sucesso: Passagem encontrada para o passageiro " + passagemBuscada.getPassageiro().getNome());
+            } else {
+                System.out.println("Falha: Passagem não encontrada!");
+            }
+
+            // Teste 20: Buscar passagem por ID inexistente
+            System.out.println("\nTeste 20: Buscando passagem por ID inexistente...");
+            Passagem passagemInexistente = passagemController.buscarPassagemPorId(9999);
+            if (passagemInexistente == null) {
+                System.out.println("Sucesso: Passagem inexistente não encontrada (null retornado)");
+            } else {
+                System.out.println("Falha: Passagem deveria ser inexistente!");
+            }
+
+            // Teste 21: Listar todas as passagens
+            System.out.println("\nTeste 21: Listando todas as passagens...");
+            List<Passagem> todasPassagens = passagemController.listarTodasPassagens();
+            for (Passagem p : todasPassagens) {
+                System.out.println("ID: " + p.getId() + " | Passageiro: " + p.getPassageiro().getNome() +
+                        " | Voo: " + p.getVoo().getNumeroVoo() + " | Assento: " + p.getAssento() +
+                        " | Valor pago: R$" + p.getPrecoPago());
+            }
+
+            // Teste 22: Buscar passagens por passageiro
+            System.out.println("\nTeste 22: Buscando passagens por passageiro...");
+            List<Passagem> passagensDoPassageiro = passagemController.buscarPassagensPorPassageiro(passageiro.getId());
+            for (Passagem p : passagensDoPassageiro) {
+                System.out.println("ID: " + p.getId() + " | Assento: " + p.getAssento());
+            }
+
+            // Teste 23: Remover passagem
+            System.out.println("\nTeste 23: Removendo passagem...");
+            String resultadoRemocao = passagemController.removerPassagem(passagem.getId());
+            System.out.println(resultadoRemocao);
+
+            // Teste 24: Remover passagem inexistente
+            System.out.println("\nTeste 24: Tentando remover passagem inexistente...");
+            String resultadoRemocaoInexistente = passagemController.removerPassagem(9999);
+            System.out.println(resultadoRemocaoInexistente);
 
             System.out.println("\n===== TODOS OS TESTES FORAM CONCLUÍDOS COM SUCESSO! =====");
 
