@@ -1,62 +1,42 @@
 package com.model;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
-
-/**
- * Classe abstrata que representa um voo genérico
- * Requisito 1: Classe com atributos privados, métodos públicos e construtor
- * Requisito 2: Classe base para herança (VooNacional e VooInternacional)
- * Requisito 3: Implementa as interfaces Calculavel e Reservavel
- */
 public abstract class Voo implements Calculavel, Reservavel {
-
-    // Requisito 3: Implementa duas interfaces
     private String numeroVoo;
     private String origem;
     private String destino;
     private LocalDateTime dataHora;
     private double precoBase;
     private int assentosDisponiveis;
-    private boolean reservado;
+    private Aeronave aeronave;
+    private Set<String> assentosOcupados;
 
     public Voo(String numeroVoo, String origem, String destino,
-               LocalDateTime dataHora, double precoBase, int assentosDisponiveis) {
+               LocalDateTime dataHora, double precoBase,
+               int assentosDisponiveis, Aeronave aeronave) {
         this.numeroVoo = numeroVoo;
         this.origem = origem;
         this.destino = destino;
         this.dataHora = dataHora;
         this.precoBase = precoBase;
         this.assentosDisponiveis = assentosDisponiveis;
-        this.reservado = false;
+        this.aeronave = aeronave;
+        this.assentosOcupados = new HashSet<>();
     }
 
-    // Getters e Setters (Requisito 1: encapsulamento)
+    // Getters e Setters
     public String getNumeroVoo() { return numeroVoo; }
     public String getOrigem() { return origem; }
     public String getDestino() { return destino; }
     public LocalDateTime getDataHora() { return dataHora; }
     public double getPrecoBase() { return precoBase; }
-    public int getAssentosDisponiveis() {
+    public int getAssentosDisponiveis() { return assentosDisponiveis; }
+    public Aeronave getAeronave() { return aeronave; }
 
-        return assentosDisponiveis;
-
-    }
-
-    public void setAssentosDisponiveis(int assentosDisponiveis) {
-
-        this.assentosDisponiveis = assentosDisponiveis;
-    }
-
-    public void setOrigem(String origem) {
-        this.origem = origem;
-    }
-
-    // Requisito 2: Polimorfismo - método abstrato
-    @Override
-    public abstract double calcularPrecoFinal();
-
-    // Requisito 3: Implementação da interface Reservavel
+    // Implementação da interface Reservavel
     @Override
     public boolean reservar() {
         if (assentosDisponiveis > 0) {
@@ -68,12 +48,31 @@ public abstract class Voo implements Calculavel, Reservavel {
 
     @Override
     public boolean cancelarReserva() {
-        if (reservado) {
+        assentosDisponiveis++;
+        return true;
+    }
+
+    public boolean isAssentoDisponivel(String assento) {
+        return !assentosOcupados.contains(assento) && assentosDisponiveis > 0;
+    }
+    public boolean reservarAssento(String assento) {
+        if (assentosDisponiveis <= 0 || assentosOcupados.contains(assento)) {
+            return false;
+        }
+        assentosOcupados.add(assento);
+        assentosDisponiveis--;
+        return true;
+    }
+
+    public boolean liberarAssento(String assento) {
+        if (assentosOcupados.remove(assento)) {
             assentosDisponiveis++;
-            reservado = false;
             return true;
         }
         return false;
     }
 
+    // Método abstrato da interface Calculavel
+    @Override
+    public abstract double calcularPrecoFinal();
 }

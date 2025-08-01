@@ -48,10 +48,14 @@ public class PassageiroController {
         repository.remover(id);
     }
 
+    public Passageiro buscarPorLogin(String login) throws PassageiroNaoEncontradoException {
+        return repository.buscarPorLogin(login);
+    }
+
     public boolean testarLogin(String login, String senha) {
         try {
-            repository.buscarPorLoginESenha(login, senha);
-            return true;
+            Passageiro p = repository.buscarPorLogin(login);
+            return p.getSenha().equals(senha);
         } catch (PassageiroNaoEncontradoException e) {
             return false;
         }

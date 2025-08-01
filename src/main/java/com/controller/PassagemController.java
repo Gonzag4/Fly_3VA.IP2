@@ -10,6 +10,7 @@ import com.repository.IVooRepository;
 import com.repository.PassageiroRepository;
 import com.repository.PassagemRepository;
 import com.repository.VooRepository;
+import java.util.ArrayList;
 import java.util.List;
 
 public class PassagemController {
@@ -31,25 +32,37 @@ public class PassagemController {
         return instance;
     }
 
+
+    //estava dando erro - correção:
     public void comprarPassagem(Passagem passagem)
             throws PassagemJaCadastradaException, VooNaoEncontradoException,
             PassageiroNaoEncontradoException, VooLotadoException, AssentoOcupadoException {
 
-        // Validações
-        Passageiro passageiro = passageiroRepository.buscarPorId(passagem.getPassageiro().getId());
+        // Verifica se o passageiro existe
+        passageiroRepository.buscarPorId(passagem.getPassageiro().getId());
+
+        // Verifica se o voo existe
         Voo voo = vooRepository.buscarPorNumero(passagem.getVoo().getNumeroVoo());
 
+        // Verifica se o voo está lotado
+        if (voo.getAssentosDisponiveis() <= 0) {
+            throw new VooLotadoException("Voo lotado! Não há assentos disponíveis.");
+        }
+
         // Verifica se o assento já está ocupado
-        if (passagemRepository.assentoOcupado(voo.getNumeroVoo(), passagem.getAssento())) {
-            throw new AssentoOcupadoException("Assento " + passagem.getAssento() + " já está ocupado");
+        if (passagemRepository.assentoOcupado(passagem.getVoo().getNumeroVoo(), passagem.getAssento())) {
+            throw new AssentoOcupadoException("Assento " + passagem.getAssento() + " já está ocupado.");
         }
 
-        // Tenta reservar (verifica se há assentos disponíveis)
-        if (!passagem.reservar()) {
-            throw new VooLotadoException("Não há assentos disponíveis neste voo");
+        // Reserva o assento (modificado para evitar ambiguidade)
+        if (!voo.reservarAssento(passagem.getAssento())) {
+            throw new VooLotadoException("Não foi possível reservar o assento.");
         }
 
-        // Se reservou com sucesso, então adiciona ao repositório
+        // Calcula o preço final
+        passagem.setPrecoPago(voo.calcularPrecoFinal());
+
+        // Adiciona a passagem
         passagemRepository.adicionar(passagem);
     }
 
@@ -68,6 +81,24 @@ public class PassagemController {
     }
 
     public void removerPassagem(int id) throws PassagemNaoEncontradaException {
+        Passagem passagem = passagemRepository.buscarPorId(id);
+        passagem.getVoo().liberarAssento(passagem.getAssento());
         passagemRepository.remover(id);
+    }
+
+    public List<String> listarAssentosDisponiveis(String numeroVoo) throws VooNaoEncontradoException {
+        Voo voo = vooRepository.buscarPorNumero(numeroVoo);
+        List<String> assentosDisponiveis = new ArrayList<>();
+        int totalAssentos = voo.getAeronave().getTotalAssentos();
+
+        // Simples implementação - pode ser melhorada
+        for (int i = 1; i <= totalAssentos; i++) {
+            String assento = "A" + i;
+            if (voo.isAssentoDisponivel(assento)) {
+                assentosDisponiveis.add(assento);
+            }
+        }
+
+        return assentosDisponiveis;
     }
 }

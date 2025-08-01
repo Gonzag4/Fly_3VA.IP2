@@ -93,4 +93,24 @@ public class PassageiroRepository implements IPassageiroRepository {
         }
         throw new PassageiroNaoEncontradoException("Login ou senha inválidos.");
     }
+
+
+    public Passageiro buscarPorLogin(String login) throws PassageiroNaoEncontradoException {
+        for (Passageiro p : passageiros) {
+            if (p.getLogin().equals(login)) {
+                return p;
+            }
+        }
+        throw new PassageiroNaoEncontradoException("Passageiro com este login não encontrado.");
+    }
+
+
+    public boolean testarLogin(String login, String senha) {
+        try {
+            Passageiro p = buscarPorLogin(login);
+            return p.getSenha().equals(senha);
+        } catch (PassageiroNaoEncontradoException e) {
+            return false;
+        }
+    }
 }

@@ -1,14 +1,12 @@
 package com.model;
 
-public class Passagem implements Reservavel { // Requisito 3: Implementa interface
-    private static int contador = 1; // Requisito 9: Atributo estático
-
+public class Passagem implements Reservavel {
+    private static int contador = 1;
     private int id;
     private Passageiro passageiro;
     private Voo voo;
     private double precoPago;
     private String assento;
-    private boolean reservada;
 
     public Passagem(Passageiro passageiro, Voo voo, String assento) {
         this.id = contador++;
@@ -16,32 +14,23 @@ public class Passagem implements Reservavel { // Requisito 3: Implementa interfa
         this.voo = voo;
         this.assento = assento;
         this.precoPago = voo.calcularPrecoFinal();
-        this.reservada = false;
     }
 
-    // Getters
+    // Getters e Setters
     public int getId() { return id; }
     public Passageiro getPassageiro() { return passageiro; }
     public Voo getVoo() { return voo; }
     public double getPrecoPago() { return precoPago; }
+    public void setPrecoPago(double precoPago) { this.precoPago = precoPago; }
     public String getAssento() { return assento; }
 
-    // Requisito 3: Implementação da interface Reservavel
     @Override
     public boolean reservar() {
-        if (!reservada && voo.reservar()) {
-            reservada = true;
-            return true;
-        }
-        return false;
+        return voo.reservar();
     }
 
     @Override
     public boolean cancelarReserva() {
-        if (reservada && voo.cancelarReserva()) {
-            reservada = false;
-            return true;
-        }
-        return false;
+        return voo.cancelarReserva();
     }
 }

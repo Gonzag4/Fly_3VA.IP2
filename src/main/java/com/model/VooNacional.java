@@ -12,8 +12,8 @@ public class VooNacional extends Voo {
 
     public VooNacional(String numeroVoo, String origem, String destino,
                        LocalDateTime dataHora, double precoBase,
-                       int assentosDisponiveis, double taxaEmbarque) {
-        super(numeroVoo, origem, destino, dataHora, precoBase, assentosDisponiveis);
+                       int assentosDisponiveis, double taxaEmbarque, Aeronave aeronave) {
+        super(numeroVoo, origem, destino, dataHora, precoBase, assentosDisponiveis, aeronave);
         this.taxaEmbarque = taxaEmbarque;
     }
 
@@ -22,6 +22,4 @@ public class VooNacional extends Voo {
     public double calcularPrecoFinal() {
         return getPrecoBase() + taxaEmbarque;
     }
-
-    public double getTaxaEmbarque() { return taxaEmbarque; }
 }

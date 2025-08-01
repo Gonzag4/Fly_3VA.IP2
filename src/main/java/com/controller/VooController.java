@@ -1,22 +1,19 @@
 package com.controller;
 
-import com.exceptions.VooJaCadastradoException;
-import com.exceptions.VooNaoEncontradoException;
-import com.model.Voo;
-import com.model.VooInternacional;
-import com.model.VooNacional;
-import com.repository.IVooRepository;
-import com.repository.VooRepository;
+import com.exceptions.*;
+import com.model.*;
+import com.repository.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
 public class VooController {
-    // Requisito 9: Singleton
     private static VooController instance;
-    private final IVooRepository repository;
+    private final IVooRepository vooRepository;
+    private final IAeronaveRepository aeronaveRepository;
 
     private VooController() {
-        this.repository = VooRepository.getInstance();
+        this.vooRepository = VooRepository.getInstance();
+        this.aeronaveRepository = AeronaveRepository.getInstance();
     }
 
     public static synchronized VooController getInstance() {
@@ -28,38 +25,56 @@ public class VooController {
 
     public void cadastrarVooNacional(String numeroVoo, String origem, String destino,
                                      LocalDateTime dataHora, double precoBase,
-                                     int assentosDisponiveis, double taxaEmbarque) throws VooJaCadastradoException {
-        Voo voo = new VooNacional(numeroVoo, origem, destino, dataHora, precoBase, assentosDisponiveis, taxaEmbarque);
-        repository.adicionar(voo);
+                                     int aeronaveId, double taxaEmbarque, int idEmpresa)
+            throws VooJaCadastradoException, AeronaveNaoEncontradaException, AeronaveNaoEncontradaException {
+
+        Aeronave aeronave = aeronaveRepository.buscarPorId(aeronaveId);
+        if (aeronave.getIdEmpresa() != idEmpresa) {
+            throw new AeronaveNaoEncontradaException("Aeronave não pertence à empresa");
+        }
+
+        Voo voo = new VooNacional(numeroVoo, origem, destino, dataHora,
+                precoBase, aeronave.getTotalAssentos(),
+                taxaEmbarque, aeronave);
+        vooRepository.adicionar(voo);
     }
 
     public void cadastrarVooInternacional(String numeroVoo, String origem, String destino,
                                           LocalDateTime dataHora, double precoBase,
-                                          int assentosDisponiveis, double taxaEmbarque,
-                                          double taxaAlfandega) throws VooJaCadastradoException {
-        Voo voo = new VooInternacional(numeroVoo, origem, destino, dataHora, precoBase, assentosDisponiveis, taxaEmbarque, taxaAlfandega);
-        repository.adicionar(voo);
+                                          int aeronaveId, double taxaEmbarque,
+                                          double taxaAlfandega, int idEmpresa)
+            throws VooJaCadastradoException, AeronaveNaoEncontradaException, AeronaveNaoEncontradaException {
+
+        Aeronave aeronave = aeronaveRepository.buscarPorId(aeronaveId);
+        if (aeronave.getIdEmpresa() != idEmpresa) {
+            throw new AeronaveNaoEncontradaException("Aeronave não pertence à empresa");
+        }
+
+        Voo voo = new VooInternacional(numeroVoo, origem, destino, dataHora,
+                precoBase, aeronave.getTotalAssentos(),
+                taxaEmbarque, taxaAlfandega, aeronave);
+        vooRepository.adicionar(voo);
     }
 
     public Voo buscarVoo(String numeroVoo) throws VooNaoEncontradoException {
-        return repository.buscarPorNumero(numeroVoo);
+        return vooRepository.buscarPorNumero(numeroVoo);
     }
 
     public List<Voo> listarTodosVoos() {
-        return repository.listarTodos();
+        return vooRepository.listarTodos();
     }
 
     public void removerVoo(String numeroVoo) throws VooNaoEncontradoException {
-        repository.remover(numeroVoo);
+        vooRepository.remover(numeroVoo);
+        System.out.println("-> Sucesso: Voo removido com sucesso");
     }
 
-    // Requisito 2: Polimorfismo (método genérico para qualquer tipo de Voo)
     public double calcularPrecoFinalVoo(String numeroVoo) throws VooNaoEncontradoException {
-        Voo voo = repository.buscarPorNumero(numeroVoo);
-        return voo.calcularPrecoFinal(); // Chama a implementação específica (nacional/internacional)
+        Voo voo = vooRepository.buscarPorNumero(numeroVoo);
+        return voo.calcularPrecoFinal();
     }
 
     public void atualizar(Voo voo) throws VooNaoEncontradoException {
-        repository.atualizar(voo);
+        vooRepository.atualizar(voo);
     }
 }

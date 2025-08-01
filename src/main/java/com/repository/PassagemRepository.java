@@ -36,9 +36,13 @@ public class PassagemRepository implements IPassagemRepository {
 
     @Override
     public boolean assentoOcupado(String numeroVoo, String assento) {
-        return passagens.stream()
-                .anyMatch(p -> p.getVoo().getNumeroVoo().equals(numeroVoo)
-                        && p.getAssento().equalsIgnoreCase(assento));
+        for (Passagem p : passagens) {
+            if (p.getVoo().getNumeroVoo().equals(numeroVoo) &&
+                    p.getAssento().equalsIgnoreCase(assento)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
