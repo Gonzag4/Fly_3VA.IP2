@@ -137,10 +137,10 @@ public class SistemaVendasPassagens {
 
     // ========== MÉTODOS DE AERONAVE ==========
 
-    public void cadastrarAeronave(String modelo, int fileiras, int assentosPorFileira)
+    public void cadastrarAeronave(String modelo, int fileiras, int assentosPorFileira, int idEmpresa)
             throws AeronaveJaCadastradaException {
         try {
-            aeronaveController.cadastrarAeronave(modelo, fileiras, assentosPorFileira);
+            aeronaveController.cadastrarAeronave(modelo, fileiras, assentosPorFileira, idEmpresa);
         } catch (Exception e) {
             throw new AeronaveJaCadastradaException("Erro ao cadastrar aeronave: " + e.getMessage());
         }

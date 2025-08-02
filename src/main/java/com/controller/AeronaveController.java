@@ -22,9 +22,9 @@ public class AeronaveController {
         return instance;
     }
 
-    public void cadastrarAeronave(String modelo, int fileiras, int assentosPorFileira)
+    public void cadastrarAeronave(String modelo, int fileiras, int assentosPorFileira, int idEmpresa)
             throws AeronaveJaCadastradaException {
-        Aeronave aeronave = new Aeronave(modelo, fileiras, assentosPorFileira);
+        Aeronave aeronave = new Aeronave(modelo, fileiras, assentosPorFileira, idEmpresa);
         repository.cadastrar(aeronave);
     }
 

@@ -82,8 +82,9 @@ public class Testes {
 
             // Cadastro de aeronaves
             System.out.println("\n10. Cadastrando aeronaves válidas...");
-            aeronaveController.cadastrarAeronave("Boeing 737", 30, 6); // 180 assentos
-            aeronaveController.cadastrarAeronave("Airbus A320", 25, 4); // 100 assentos
+            int idEmpresa = 1;
+            aeronaveController.cadastrarAeronave("Boeing 737", 30, 6, idEmpresa); // 180 assentos
+            aeronaveController.cadastrarAeronave("Airbus A320", 25, 4, idEmpresa); // 100 assentos
             System.out.println("-> Sucesso: 2 aeronaves cadastradas");
 
             // Associar aeronave à empresa

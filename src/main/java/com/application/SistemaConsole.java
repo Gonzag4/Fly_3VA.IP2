@@ -349,8 +349,7 @@ public class SistemaConsole {
         scanner.nextLine(); // Limpar buffer
 
         try {
-            sistema.cadastrarAeronave(modelo, fileiras, assentosPorFileira);
-            System.out.println("Aeronave cadastrada com sucesso!");
+            sistema.cadastrarAeronave(modelo, fileiras, assentosPorFileira, empresaLogada.getId());            System.out.println("Aeronave cadastrada com sucesso!");
         } catch (AeronaveJaCadastradaException e) {
             System.out.println("Erro: " + e.getMessage());
         }

@@ -12,11 +12,12 @@ public class Aeronave {
     private int assentosPorFileira;
     private int idEmpresa;
 
-    public Aeronave(String modelo, int fileiras, int assentosPorFileira) {
+    public Aeronave(String modelo, int fileiras, int assentosPorFileira, int idEmpresa) {
         this.id = contador++;
         this.modelo = modelo;
         this.fileiras = fileiras;
         this.assentosPorFileira = assentosPorFileira;
+        this.idEmpresa = idEmpresa;
     }
 
     // Getters e Setters
