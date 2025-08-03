@@ -20,7 +20,7 @@ public class MenuEmpresaController {
     @FXML
     private void onCadastrarAeronave() {
         try {
-            javafx.fxml.FXMLLoader loader = new javafx.fxml.FXMLLoader(getClass().getResource("/CadastrarAeronaveView.fxml"));
+            javafx.fxml.FXMLLoader loader = new javafx.fxml.FXMLLoader(getClass().getResource("/com/view/CadastrarAeronaveView.fxml"));
             javafx.scene.Parent root = loader.load();
 
             Stage cadastroStage = new Stage();
@@ -41,7 +41,7 @@ public class MenuEmpresaController {
     @FXML
     private void onCadastrarVooNacional() {
         try {
-            javafx.fxml.FXMLLoader loader = new javafx.fxml.FXMLLoader(getClass().getResource("/CadastrarVooNacionalView.fxml"));
+            javafx.fxml.FXMLLoader loader = new javafx.fxml.FXMLLoader(getClass().getResource("/com/view/CadastrarVooNacionalView.fxml"));
             javafx.scene.Parent root = loader.load();
 
             Stage cadastroStage = new Stage();
@@ -62,7 +62,7 @@ public class MenuEmpresaController {
     @FXML
     private void onCadastrarVooInternacional() {
         try {
-            javafx.fxml.FXMLLoader loader = new javafx.fxml.FXMLLoader(getClass().getResource("/CadastrarVooInternacionalView.fxml"));
+            javafx.fxml.FXMLLoader loader = new javafx.fxml.FXMLLoader(getClass().getResource("/com/view/CadastrarVooInternacionalView.fxml"));
             javafx.scene.Parent root = loader.load();
 
             Stage cadastroStage = new Stage();
@@ -83,7 +83,7 @@ public class MenuEmpresaController {
     @FXML
     private void onListarVoos() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ListaVoosView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/view/ListaVoosView.fxml"));
             Parent root = loader.load();
 
             Stage voosStage = new Stage();
@@ -105,7 +105,7 @@ public class MenuEmpresaController {
     @FXML
     private void onListarAeronaves() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ListaAeronavesView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/view/ListaAeronavesView.fxml"));
             Parent root = loader.load();
 
             Stage aeronavesStage = new Stage();

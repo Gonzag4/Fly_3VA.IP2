@@ -20,18 +20,3 @@
 .button.menu:hover {
     -fx-background-color: #5b7bd5;
 }
-
-.combo-aeronave {
-    -fx-font-size: 14px;
-    -fx-background-color: #f0f4fa;
-    -fx-border-color: #1976d2;
-    -fx-border-radius: 6;
-    -fx-background-radius: 6;
-    -fx-padding: 4 8 4 8;
-}
-.combo-aeronave .arrow-button {
-    -fx-background-color: #1976d2;
-}
-.combo-aeronave .arrow {
-    -fx-background-color: white;
-}

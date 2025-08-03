@@ -26,7 +26,7 @@ public class MenuPassageiroController {
     @FXML
     private void onVerVoos() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ListaVoosView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/view/ListaVoosView.fxml"));
             Parent root = loader.load();
 
             Stage voosStage = new Stage();
@@ -48,7 +48,7 @@ public class MenuPassageiroController {
     @FXML
     private void onComprarPassagem() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ComprarPassagemView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/view/ComprarPassagemView.fxml"));
             Parent root = loader.load();
 
             Stage comprarStage = new Stage();
@@ -69,7 +69,7 @@ public class MenuPassageiroController {
     @FXML
     private void onVerPassagens() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ListaPassagensView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/view/ListaPassagensView.fxml"));
             Parent root = loader.load();
 
             Stage passagensStage = new Stage();
@@ -91,7 +91,7 @@ public class MenuPassageiroController {
     @FXML
     private void onCancelarPassagem() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/CancelarPassagemView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/view/CancelarPassagemView.fxml"));
             Parent root = loader.load();
 
             Stage cancelarStage = new Stage();
@@ -112,7 +112,7 @@ public class MenuPassageiroController {
     @FXML
     private void onAtualizarDados() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AtualizarPassageiroView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/view/AtualizarPassageiroView.fxml"));
             Parent root = loader.load();
 
             Stage atualizarStage = new Stage();

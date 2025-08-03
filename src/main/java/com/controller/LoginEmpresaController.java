@@ -33,7 +33,7 @@ public class LoginEmpresaController {
             EmpresaAerea empresa = SistemaVendasPassagens.getInstance().loginEmpresa(login, senha);
             lblErro.setText("Bem-vindo, " + empresa.getNome() + "!");
 
-            javafx.fxml.FXMLLoader loader = new javafx.fxml.FXMLLoader(getClass().getResource("/MenuEmpresaView.fxml"));
+            javafx.fxml.FXMLLoader loader = new javafx.fxml.FXMLLoader(getClass().getResource("/com/view/MenuEmpresaView.fxml"));
             javafx.scene.Parent root = loader.load();
             Stage menuStage = new Stage();
             com.controller.MenuEmpresaController controller = loader.getController();

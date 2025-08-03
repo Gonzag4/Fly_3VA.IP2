@@ -30,7 +30,7 @@ public class MainViewController {
     @FXML
     private void onLoginPassageiro() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/LoginPassageiroView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/view/LoginPassageiroView.fxml"));
             Parent root = loader.load();
 
             Stage loginStage = new Stage();
@@ -51,7 +51,7 @@ public class MainViewController {
     @FXML
     private void onCadastroPassageiro() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/CadastroPassageiroView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/view/CadastroPassageiroView.fxml"));
             Parent root = loader.load();
 
             Stage cadastroStage = new Stage();
@@ -72,7 +72,7 @@ public class MainViewController {
     @FXML
     private void onLoginEmpresa() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/LoginEmpresaView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/view/LoginEmpresaView.fxml"));
             Parent root = loader.load();
 
             Stage loginStage = new Stage();
@@ -93,7 +93,7 @@ public class MainViewController {
     @FXML
     private void onCadastroEmpresa() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/CadastroEmpresaView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/view/CadastroEmpresaView.fxml"));
             Parent root = loader.load();
 
             Stage cadastroStage = new Stage();

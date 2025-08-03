@@ -37,7 +37,7 @@ public class LoginPassageiroController {
             Passageiro passageiro = SistemaVendasPassagens.getInstance().loginPassageiro(login, senha);
             lblErro.setText("Bem-vindo, " + passageiro.getNome() + "!");
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/MenuPassageiroView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/view/MenuPassageiroView.fxml"));
             Parent root = loader.load();
             Stage menuStage = new Stage();
             MenuPassageiroController controller = loader.getController();

@@ -75,4 +75,9 @@ public abstract class Voo implements Calculavel, Reservavel {
     // Método abstrato da interface Calculavel
     @Override
     public abstract double calcularPrecoFinal();
+
+    @Override
+    public String toString() {
+        return numeroVoo + " - " + origem + " -> " + destino;
+    }
 }

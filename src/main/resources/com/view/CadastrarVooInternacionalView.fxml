@@ -5,18 +5,19 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.controller.CadastrarVooNacionalController"
-            prefHeight="400.0" prefWidth="500.0">
-    <VBox alignment="CENTER" spacing="10" prefWidth="500" prefHeight="400">
-        <Label text="Cadastrar Voo Nacional" styleClass="titulo"/>
+            fx:controller="com.controller.CadastrarVooInternacionalController"
+            prefHeight="450.0" prefWidth="500.0">
+    <VBox alignment="CENTER" spacing="10" prefWidth="500" prefHeight="450">
+        <Label text="Cadastrar Voo Internacional" styleClass="titulo"/>
         <TextField fx:id="txtNumeroVoo" promptText="Número do Voo"/>
         <TextField fx:id="txtOrigem" promptText="Origem"/>
         <TextField fx:id="txtDestino" promptText="Destino"/>
-        <TextField fx:id="txtData" promptText="Data(yyyy-MM-dd)"/>
+        <TextField fx:id="txtData" promptText="Data (dd/mm/yyyy)"/>
         <TextField fx:id="txtHora" promptText="Hora de Saída (HH:mm)"/>
         <TextField fx:id="txtPrecoBase" promptText="Preço Base"/>
-        <TextField fx:id="txtAeronaveId" promptText="ID da Aeronave" />
+        <TextField fx:id="txtAeronaveId" promptText="ID da Aeronave"/>
         <TextField fx:id="txtTaxaEmbarque" promptText="Taxa de Embarque"/>
+        <TextField fx:id="txtTaxaAlfandega" promptText="Taxa de Alfândega"/>
         <Label fx:id="lblMensagem" textFill="red"/>
         <HBox spacing="10" alignment="CENTER">
             <Button text="Cadastrar" onAction="#onCadastrar"/>

@@ -47,7 +47,8 @@ public class CadastrarVooNacionalController {
             String numeroVoo = txtNumeroVoo.getText();
             String origem = txtOrigem.getText();
             String destino = txtDestino.getText();
-            LocalDate data = LocalDate.parse(txtData.getText()); // formato: yyyy-MM-dd
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            LocalDate data = LocalDate.parse(txtData.getText(), formatter);
             LocalTime hora = LocalTime.parse(txtHora.getText()); // formato HH:mm
             LocalDateTime dataHora = LocalDateTime.of(data, hora);
             double precoBase = Double.parseDouble(txtPrecoBase.getText());
