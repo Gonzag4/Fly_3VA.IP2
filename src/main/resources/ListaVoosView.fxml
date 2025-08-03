@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.controller.ListaVoosController"
+            prefHeight="400.0" prefWidth="600.0">
+    <VBox alignment="CENTER" spacing="10" prefWidth="600" prefHeight="400">
+        <ListView fx:id="listVoos" prefWidth="580" prefHeight="340"/>
+        <Button text="Fechar" onAction="#onFechar" prefWidth="100"/>
+    </VBox>
+</AnchorPane>

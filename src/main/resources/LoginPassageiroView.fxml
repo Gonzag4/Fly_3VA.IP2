@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.controller.LoginPassageiroController"
+            prefHeight="250.0" prefWidth="400.0">
+    <VBox alignment="CENTER" spacing="15" prefWidth="400" prefHeight="250">
+        <Label text="Login Passageiro" styleClass="titulo"/>
+        <TextField fx:id="txtLogin" promptText="Login"/>
+        <PasswordField fx:id="txtSenha" promptText="Senha"/>
+        <Label fx:id="lblErro" textFill="red"/>
+        <HBox spacing="10" alignment="CENTER">
+            <Button text="Entrar" onAction="#onEntrar"/>
+            <Button text="Cancelar" onAction="#onCancelar"/>
+        </HBox>
+    </VBox>
+</AnchorPane>

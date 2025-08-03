@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.controller.MenuPassageiroController"
+            prefHeight="400.0" prefWidth="600.0">
+    <VBox alignment="CENTER" spacing="15" prefWidth="600" prefHeight="400">
+        <Label fx:id="lblBemVindo" styleClass="titulo"/>
+        <Button text="Ver voos disponíveis" onAction="#onVerVoos"/>
+        <Button text="Comprar passagem" onAction="#onComprarPassagem"/>
+        <Button text="Ver minhas passagens" onAction="#onVerPassagens"/>
+        <Button text="Cancelar passagem" onAction="#onCancelarPassagem"/>
+        <Button text="Atualizar meus dados" onAction="#onAtualizarDados"/>
+        <Button text="Sair" onAction="#onSair"/>
+    </VBox>
+</AnchorPane>

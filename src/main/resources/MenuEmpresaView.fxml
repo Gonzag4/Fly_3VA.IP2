@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.controller.MenuEmpresaController"
+            prefHeight="400.0" prefWidth="600.0">
+    <VBox alignment="CENTER" spacing="20" prefWidth="600" prefHeight="400">
+        <Label text="Menu Empresa Aérea" styleClass="titulo"/>
+        <Button fx:id="btnCadastrarAeronave" text="Cadastrar Aeronave" onAction="#onCadastrarAeronave"/>
+        <Button fx:id="btnCadastrarVooNacional" text="Cadastrar Voo Nacional" onAction="#onCadastrarVooNacional"/>
+        <Button fx:id="btnCadastrarVooInternacional" text="Cadastrar Voo Internacional" onAction="#onCadastrarVooInternacional"/>
+        <Button fx:id="btnListarVoos" text="Listar Voos" onAction="#onListarVoos"/>
+        <Button fx:id="btnListarAeronaves" text="Listar Aeronaves" onAction="#onListarAeronaves"/>
+        <Button fx:id="btnAtualizarDados" text="Atualizar Dados" onAction="#onAtualizarDados"/>
+        <Button fx:id="btnSair" text="Sair" onAction="#onSair"/>
+    </VBox>
+</AnchorPane>

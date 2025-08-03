@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.controller.AtualizarPassageiroController"
+            prefHeight="320.0" prefWidth="400.0">
+    <VBox alignment="CENTER" spacing="10" prefWidth="400" prefHeight="320">
+        <Label text="Atualizar Dados do Passageiro"/>
+        <TextField fx:id="txtNome" promptText="Nome"/>
+        <TextField fx:id="txtCpf" promptText="CPF" disable="true"/>
+        <TextField fx:id="txtTelefone" promptText="Telefone"/>
+        <TextField fx:id="txtLogin" promptText="Login" disable="true"/>
+        <PasswordField fx:id="txtSenha" promptText="Nova Senha"/>
+        <HBox spacing="10" alignment="CENTER">
+            <Button text="Salvar" onAction="#onSalvar"/>
+            <Button text="Cancelar" onAction="#onCancelar"/>
+        </HBox>
+        <Label fx:id="lblMensagem" textFill="red"/>
+    </VBox>
+</AnchorPane>

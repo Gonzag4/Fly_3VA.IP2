@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.controller.ListaPassagensController"
+            prefHeight="400.0" prefWidth="600.0">
+    <VBox alignment="CENTER" spacing="10" prefWidth="600" prefHeight="400">
+        <Label text="Minhas Passagens"/>
+        <TableView fx:id="tablePassagens" prefWidth="580" prefHeight="320">
+            <columns>
+                <TableColumn fx:id="colVoo" text="Voo" prefWidth="80"/>
+                <TableColumn fx:id="colOrigem" text="Origem" prefWidth="100"/>
+                <TableColumn fx:id="colDestino" text="Destino" prefWidth="100"/>
+                <TableColumn fx:id="colDataHora" text="Data/Hora" prefWidth="140"/>
+                <TableColumn fx:id="colAssento" text="Assento" prefWidth="60"/>
+            </columns>
+        </TableView>
+        <Button text="Fechar" onAction="#onFechar"/>
+    </VBox>
+</AnchorPane>

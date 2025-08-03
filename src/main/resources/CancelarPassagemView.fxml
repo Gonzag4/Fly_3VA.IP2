@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.controller.CancelarPassagemController"
+            prefHeight="350.0" prefWidth="500.0">
+    <VBox alignment="CENTER" spacing="10" prefWidth="500" prefHeight="350">
+        <Label text="Selecione a passagem para cancelar"/>
+        <TableView fx:id="tablePassagens" prefWidth="480" prefHeight="220">
+            <columns>
+                <TableColumn fx:id="colVoo" text="Voo" prefWidth="80"/>
+                <TableColumn fx:id="colOrigem" text="Origem" prefWidth="100"/>
+                <TableColumn fx:id="colDestino" text="Destino" prefWidth="100"/>
+                <TableColumn fx:id="colDataHora" text="Data/Hora" prefWidth="120"/>
+                <TableColumn fx:id="colAssento" text="Assento" prefWidth="60"/>
+            </columns>
+        </TableView>
+        <HBox spacing="10" alignment="CENTER">
+            <Button text="Cancelar Passagem" onAction="#onCancelar"/>
+            <Button text="Fechar" onAction="#onFechar"/>
+        </HBox>
+        <Label fx:id="lblMensagem" textFill="red"/>
+    </VBox>
+</AnchorPane>
