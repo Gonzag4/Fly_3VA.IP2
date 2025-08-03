@@ -21,7 +21,6 @@ public class Main extends Application {
 
             Scene scene = new Scene(root, 600, 400);
 
-            // Tenta carregar o CSS, se existir
             try {
                 scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
             } catch (Exception e) {

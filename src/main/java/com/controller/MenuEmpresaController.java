@@ -132,7 +132,7 @@ public class MenuEmpresaController {
     @FXML
     private void onAtualizarDados() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AtualizarEmpresaView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/view/AtualizarEmpresaView.fxml"));
             Parent root = loader.load();
 
             Stage atualizarStage = new Stage();
