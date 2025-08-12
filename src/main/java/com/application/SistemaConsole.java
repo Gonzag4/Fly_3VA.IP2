@@ -8,6 +8,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Scanner;
 
+//metodo scanner sem javafx, preparação para o front:
+
 public class SistemaConsole {
     private static final SistemaVendasPassagens sistema = SistemaVendasPassagens.getInstance();
     private static final Scanner scanner = new Scanner(System.in);
